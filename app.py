@@ -17,9 +17,9 @@ input_sms = st.text_area("Enter the message")
 
 if st.button('Predict'):
    # 1. preprocess
-   transformed_sms = text_transform(input_sms)
+   transformed_sms = transform(input_sms)
    # 2. vectorize
-   vector_input = tfidf.transform([transformed_sms])
+   vector_input = tfidf.transform(['transformed email'])
    # 3. predict
    result = model.predict(vector_input)[0] 
    # 4. Display
