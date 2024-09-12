@@ -1,6 +1,7 @@
 import streamlit as st 
 import pickle
 import string
+string.punctuation
 from nltk.corpus import stopwords
 import nltk
 from nltk.stem.porter import PorterStemmer
