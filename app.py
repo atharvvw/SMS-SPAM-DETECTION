@@ -7,7 +7,34 @@ from nltk.stem.porter import PorterStemmer
 
 ps = PorterStemmer()
 
-
+def transform(text):
+    text = text.lower()
+    text = nltk.word_tokenize(text)
+    
+    #loop for removing special char
+    y= []
+    for i in text:
+        if i.isalnum():
+            y.append(i)
+            
+    text = y[:]
+    y.clear()
+    
+    #loop for removing stopwords and punctuation
+    for i in text:
+        if i not in stopwords.words('english') and i not in string.punctuation:
+            y.append(i)
+            
+    text = y[:]
+    y.clear()
+    
+    #stemming
+    for i in text:
+        ps.stem(i)
+        y.append(ps.stem(i))
+        
+    return " ".join(y)
+   
 tfidf = pickle.load(open('vectorizer.pkl','rb'))
 model = pickle.load(open('model.pkl','rb'))
 
